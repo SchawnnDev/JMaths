@@ -1,34 +1,36 @@
 package fr.schawnndev;
 
-import fr.schawnndev.maths.Point;
-import fr.schawnndev.maths.Vector2D;
+import java.util.Scanner;
+
+import fr.schawnndev.tests.ITest;
+import fr.schawnndev.tests.matrices.Matrice;
+import fr.schawnndev.tests.vectors.Parallelogramme;
 
 public class Main {
 
+	private static ITest parallelogramme = new Parallelogramme();
+	private static ITest matrice = new Matrice();
+
 	public static void main(String[] args) {
-		// points
-		Point a = new Point("A", 2, -1);
-		Point b = new Point("B", 3, 4);
-		Point c = new Point("C", -5, 1);
-		Point d = new Point("D");
 
-		d.setX(c.getX() - b.getX() + a.getX());
-		d.setY(c.getY() - b.getY() + a.getY());
+		Scanner scanner = new Scanner(System.in);
 
-		System.out.println(d.toString());
-		System.out.println(c.toString());
+		System.out.println("Parallelogramme vecteurs: 1 / Matrice: 2");
+		int id = scanner.nextInt();
 
-		Vector2D ab = new Vector2D(a, b);
-		Vector2D dc = new Vector2D(d,c);
-		System.out.println("ab= " + ab.toString());
-		System.out.println("dc= " + dc.toString());
+		if (id > 0 && id < 3) {
 
-		if (ab.equals(dc)) {
-			System.out.println("C'est un parallèlogramme");
+			if (id == 1)
+				parallelogramme.test(true);
+			else if (id == 2)
+				matrice.test(true);
+
 		} else {
-			System.out.println("Ce n'est pas un parallèlogramme");
+			System.out.println("Aucun test n'est trouvé avec ce chiffre");
 		}
-		
+
+		scanner.close();
+
 	}
 
 }
